@@ -29,10 +29,9 @@ module Counter24 #(parameter RATE = 1000000)(sysclk, rstn, ovf);
 endmodule
 
 // Top module
-module FNDCounter(clk, rstn, clksel, seg, an);
+module FNDCounter(clk, rstn, seg, an);
     input clk;
     input rstn;
-    input clksel;
     output [6:0] seg;   // LED
     output reg [7:0] an;// FND selection (decoded)
     reg [31:0] fndcnt;  // Decimal up-counter
@@ -40,17 +39,11 @@ module FNDCounter(clk, rstn, clksel, seg, an);
     reg [3:0] bcd;
 
     wire fndovf;
-    wire fndovf1;
-    wire fndovf2;
     wire refreshovf;
 
-    Counter24                  fctr1(clk, rstn, fndovf1);   // 10ms
-    Counter24 #(.RATE(500000)) fctr2(clk, rstn, fndovf2);   // 5ms
+    Counter24                  fctr(clk, rstn, fndovf);    // 10ms
     Counter24 #(.RATE(125000)) rctr(clk, rstn, refreshovf); // 10/8ms
     BCDDecoder dec(bcd, seg);
-    
-    // Mux
-    assign fndovf = (clksel) ? fndovf2 : fndovf1;
 
     always @(*) begin
         case (fndsel) 
