@@ -6,3 +6,5 @@ vivado-projects
 *.so
 *.cxx
 *.h
+mk*.v
+mk*
