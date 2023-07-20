@@ -7,9 +7,9 @@ module mkTb (Empty);
 
     Stmt egg = seq
         $display("Pre-Cracked egg");
-        $display("Saves time!");
         // an action with several actions still only take one cycle
         action
+            $display("Saves time!");
             $display("No messy hand");
             $display("I enjoy");
         endaction
