@@ -26,6 +26,7 @@ module mkTb (Empty);
 
     rule rlFimally (state == 4);
         $display("Fimally!");
+        $finish(0);
     endrule
 endmodule
 
