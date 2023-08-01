@@ -11,11 +11,17 @@ module mkTb (Empty);
     Reg#(Bit#(16)) x <- mkReg(0);
     Reg#(Bit#(16)) y <- mkReg(0);
 
+    function Action displayRegs();
+        action
+            $display("x=%d, y=%d", x, y);
+        endaction
+    endfunction
+
     (* execution_order = "rlEnd, rlUpdateAndDisplay" *)
     rule rlUpdateAndDisplay;
         regUpdate(x);
         regUpdate(y);
-        $display("x=%d, y=%d", x, y);
+        displayRegs();
     endrule
 
     rule rlEnd (x > 10);
