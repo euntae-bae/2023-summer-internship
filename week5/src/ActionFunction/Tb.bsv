@@ -1,6 +1,6 @@
 package Tb;
 
-function Action regUpdate(Reg#(Bit#(16)) r);
+function Action regUpdate(Reg#(t) r) provisos (Bits#(t, sizea), Arith#(t));
     action
         r <= r + 1;
     endaction
@@ -9,7 +9,7 @@ endfunction
 (* synthesize *)
 module mkTb (Empty);
     Reg#(Bit#(16)) x <- mkReg(0);
-    Reg#(Bit#(16)) y <- mkReg(0);
+    Reg#(Bit#(32)) y <- mkReg(0);
 
     function Action displayRegs();
         action

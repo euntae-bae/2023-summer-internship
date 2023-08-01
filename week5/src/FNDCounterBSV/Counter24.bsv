@@ -1,4 +1,4 @@
-package Counter24;
+package Counter;
 
 interface 
 
