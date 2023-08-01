@@ -1,5 +1,0 @@
-package Counter;
-
-interface 
-
-endpackage
