@@ -5,7 +5,6 @@ module mkTb (Empty);
     Reg#(Bit#(16)) x <- mkReg(0);
     Reg#(Bit#(16)) y <- mkReg(0);
 
-    //(* descending_urgency = "rl2, rl1" *)
     (* execution_order = "rl2, rl1" *)
     rule rl1;
         $display(x._read()); // $display(x);
